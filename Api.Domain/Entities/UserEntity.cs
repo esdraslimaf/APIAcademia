@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Api.Domain.Entities
 {
-    internal class UserEntity
+    public class UserEntity:BaseEntity
     {
+        public string Name { get; set; }
+        public string Email { get; set; }
     }
 }
