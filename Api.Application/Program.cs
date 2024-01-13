@@ -1,3 +1,4 @@
+using Api.CrossCutting.DependencyInjection;
 
 namespace Api.Application
 {
@@ -7,12 +8,16 @@ namespace Api.Application
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            ConfigureService.ConfiguracaoDependenciaService(builder.Services);
+            ConfigureRepository.ConfiguracaoDependenciaRepository(builder.Services);
+
             // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
 
             var app = builder.Build();
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Api.Service.Services
 {
-    internal class UserService : IUserService
+    public class UserService : IUserService
     {
         private readonly IBaseRepository<UserEntity> _repo;
 
