@@ -1,4 +1,5 @@
 using Api.CrossCutting.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 namespace Api.Application
 {
@@ -16,20 +17,24 @@ namespace Api.Application
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("V1", new OpenApiInfo { Title = "Academia API - V1", Version = "v1" });
+            });
 
 
             var app = builder.Build();
-
+           
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Academia V1");
+                    c.SwaggerEndpoint("/swagger/V1/swagger.json", "Academia V1");
                     c.RoutePrefix = "swagger";
                 });
+
             }
 
             app.UseAuthorization();
