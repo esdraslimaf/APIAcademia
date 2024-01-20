@@ -1,4 +1,6 @@
+using Api.Application.Security;
 using Api.CrossCutting.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 namespace Api.Application
@@ -11,6 +13,18 @@ namespace Api.Application
 
             ConfigureService.ConfiguracaoDependenciaService(builder.Services);
             ConfigureRepository.ConfiguracaoDependenciaRepository(builder.Services);
+
+            var signingConfigurations = new SigningConfigurations();
+            builder.Services.AddSingleton(signingConfigurations);
+
+            var tokenConfigurations = new TokenConfigurations();
+            new ConfigureFromConfigurationOptions<TokenConfigurations>(
+                builder.Configuration.GetSection("TokenConfigurations")).Configure(tokenConfigurations);
+
+            builder.Services.AddSingleton(tokenConfigurations);
+
+
+
 
             // Add services to the container.
 
