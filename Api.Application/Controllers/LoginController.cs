@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Net;
 using Api.Domain.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Api.Application.Controllers
 {
@@ -12,7 +13,7 @@ namespace Api.Application.Controllers
 
     public class LoginController : ControllerBase
     {
-
+        [AllowAnonymous]
         [HttpPost]
         public async Task<object> Login([FromBody] LoginDto userEntity, [FromServices] ILoginService service)
         {
