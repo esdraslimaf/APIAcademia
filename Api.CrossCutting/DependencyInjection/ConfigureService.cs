@@ -14,6 +14,7 @@ namespace Api.CrossCutting.DependencyInjection
         public static void ConfiguracaoDependenciaService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<IUserService, UserService>();
+            serviceCollection.AddScoped<ILoginService, LoginService>();
         }
 
     }
