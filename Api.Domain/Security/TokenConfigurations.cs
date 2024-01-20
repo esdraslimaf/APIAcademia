@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Api.Domain.Security
+﻿namespace Api.Application.Security
 {
-    public class TokenConfiguration
+    public class TokenConfigurations
     {
+        public string Issuer { get; set; } //Emissor
+        public string Audience { get; set; } //Destinatário
+        public int Seconds { get; set; } //Tempo de validade
     }
 }
