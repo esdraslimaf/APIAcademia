@@ -39,8 +39,7 @@ namespace Api.Service.Services
                 if (result == null) return new { authenticated = false, message="Falha na autenticação!"};
                 else
                 {
-                    ClaimsIdentity identity = new ClaimsIdentity(
-                        
+                    ClaimsIdentity identity = new ClaimsIdentity(                  
                         new GenericIdentity(user.Email),
                         new[]
                         {
@@ -48,6 +47,7 @@ namespace Api.Service.Services
                             new Claim(JwtRegisteredClaimNames.UniqueName, user.Email),
                         }                         
                      );
+
                     DateTime createDate = DateTime.Now;
                     DateTime expirationDate = createDate + TimeSpan.FromSeconds(_tokenConfigurations.Seconds);
 

@@ -34,7 +34,7 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, erro.Message);
             }
         }
-        [Authorize("Bearer")]
+       // [Authorize("Bearer")]
         [HttpGet("{id}", Name = "GetWithId")]
         //[Route("{id}")] se preferir
         public async Task<ActionResult> Get(Guid id)
@@ -50,7 +50,7 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, erro.Message);
             }
         }
-        [Authorize("Bearer")]
+       // [Authorize("Bearer")]
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] UserEntity user)
         {
@@ -68,7 +68,7 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, erro.Message);
             }
         }
-        [Authorize("Bearer")]
+       [Authorize("Bearer")]
         [HttpPut]
         public async Task<ActionResult> Update([FromBody] UserEntity user)
         {
@@ -86,7 +86,7 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, erro.Message);
             }
         }
-        [Authorize("Bearer")]
+      //  [Authorize("Bearer")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
