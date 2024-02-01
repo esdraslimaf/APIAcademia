@@ -9,12 +9,9 @@ namespace Api.Domain.Dtos.User
 {
     public class UserDto
     {
-
-        [Required(ErrorMessage = "Campo nome é obrigatório!")]
-        public string Name { get; set; }
-
-        [Required(ErrorMessage = "Campo email é obrigatório!")]
-        [EmailAddress(ErrorMessage = "O email está em um formato inválido!")]
+        public Guid Id { get; set; }
+        public string Name { get; set; }  
         public string Email { get; set; }
+        public DateTime CreateAt { get; set; }
     }
 }
