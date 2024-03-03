@@ -22,7 +22,13 @@ namespace Api.CrossCutting.DependencyInjection
         {
             serviceCollection.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             serviceCollection.AddTransient<IUserRepository, UserImplementation>();
-            serviceCollection.AddDbContext<MyContext>(options => options.UseMySql("server=localhost;port=3306;database=teste1;user=root;password=admin", ServerVersion.AutoDetect("server=localhost;port=3306;database=teste1;user=root;password=admin")));
+            serviceCollection.AddTransient<IUfRepository, UfImplementation>();
+            serviceCollection.AddTransient<ICepRepository, CepImplementation>();
+            serviceCollection.AddTransient<IMunicipioRepository, MunicipioImplementation>();
+
+            serviceCollection.AddDbContext<MyContext>(options => options.UseMySql("server=localhost;port=3306;database=teste2;user=root;password=admin", ServerVersion.AutoDetect("server=localhost;port=3306;database=teste1;user=root;password=admin")));
+            
+        
         }
     }
 }

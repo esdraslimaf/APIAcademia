@@ -1,4 +1,7 @@
-﻿using Api.Domain.Interfaces.Services.User;
+﻿using Api.Domain.Interfaces.Services.Cep;
+using Api.Domain.Interfaces.Services.Municipio;
+using Api.Domain.Interfaces.Services.Uf;
+using Api.Domain.Interfaces.Services.User;
 using Api.Service.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -13,8 +16,11 @@ namespace Api.CrossCutting.DependencyInjection
     {
         public static void ConfiguracaoDependenciaService(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<IUserService, UserService>();
-            serviceCollection.AddScoped<ILoginService, LoginService>();
+            serviceCollection.AddTransient<IUserService, UserService>();
+            serviceCollection.AddTransient<ILoginService, LoginService>();
+            serviceCollection.AddTransient<IUfService, UfService>();
+            serviceCollection.AddTransient<ICepService, CepService>();
+            serviceCollection.AddTransient<IMunicipioService, MunicipioService>();
         }
 
     }

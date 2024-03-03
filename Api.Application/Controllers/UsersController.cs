@@ -17,7 +17,7 @@ namespace Api.Application.Controllers
         private IUserService _service;
         public UsersController(IUserService service)
         {
-            _service = service; 
+            _service = service;
         }
 
         [Authorize("Bearer")]
@@ -35,7 +35,7 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, erro.Message);
             }
         }
-       // [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpGet("{id}", Name = "GetWithId")]
         //[Route("{id}")] se preferir
         public async Task<ActionResult> Get(Guid id)
@@ -51,13 +51,14 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, erro.Message);
             }
         }
-       // [Authorize("Bearer")]
+
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] UserDtoCreate user)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
             try
-            { 
+            {
                 var result = await _service.Post(user);
 
                 if (result != null) return Created(new Uri(Url.Link("GetWithId", new { id = result.Id })), result);
@@ -69,7 +70,7 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, erro.Message);
             }
         }
-       [Authorize("Bearer")]
+        [Authorize("Bearer")]
         [HttpPut]
         public async Task<ActionResult> Update([FromBody] UserDtoUpdate user)
         {
@@ -77,9 +78,9 @@ namespace Api.Application.Controllers
             try
             {
                 var result = await _service.Put(user);
-               
+
                 if (result != null) return Ok(result);
-               
+
                 else return BadRequest();
             }
             catch (Exception erro)
@@ -87,7 +88,7 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, erro.Message);
             }
         }
-      //  [Authorize("Bearer")]
+        [Authorize("Bearer")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
@@ -100,7 +101,7 @@ namespace Api.Application.Controllers
             {
                 return StatusCode((int)HttpStatusCode.InternalServerError, erro.Message);
             }
-            
+
         }
 
 
