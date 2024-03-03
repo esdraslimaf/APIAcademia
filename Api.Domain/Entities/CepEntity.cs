@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Api.Domain.Entities
 {
-    public class CepEntity
+    public class CepEntity:BaseEntity
     {
         [Required]
         public string Cep { get; set; }

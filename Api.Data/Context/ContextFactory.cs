@@ -13,7 +13,7 @@ namespace Api.Data.Context
         //Abaixo é usado para criar as migrações em tempo de criação do projeto
         public MyContext CreateDbContext(string[] args)
         {
-            var stringConnection = "server=localhost;port=3306;database=teste1;user=root;password=admin";
+            var stringConnection = "server=localhost;port=3306;database=teste2;user=root;password=admin";
             //Abaixo é uma maneira de configurar opções para o DbContext chamado MyContext
             var optionsBuilder = new DbContextOptionsBuilder<MyContext>();         
             /* Ele cria uma instância de DbContextOptionsBuilder que pode ser usada para configurar opções para o DbContext123. Essas opções podem incluir coisas como a string de conexão do banco de dados, o provedor de banco de dados (por exemplo, SQL Server, SQLite, etc.), configurações de pool de conexões e muito mais */
