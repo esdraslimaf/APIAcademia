@@ -10,6 +10,6 @@ namespace Api.Domain.Interfaces.Services.Uf
     public interface IUfService
     {
         Task<UfDto> Get(Guid id);
-        Task<ICollection<UfDto>> GetAll();
+        Task<IEnumerable<UfDto>> GetAll();
     }
 }
